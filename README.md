@@ -146,3 +146,5 @@ O display Nokia 5110 pode exigir ajuste fino de contraste via `display.setContra
 O código-fonte deste projeto é distribuído sob a licença MIT. Isso significa que você pode usar, copiar, modificar e distribuir o firmware, inclusive em projetos pessoais ou comerciais, desde que mantenha o aviso de copyright e o texto da licença.
 
 A documentação, diagramas e imagens do projeto podem ser distribuídos sob Creative Commons Attribution 4.0 International (CC BY 4.0), o que permite reutilização e adaptação com a devida atribuição ao autor.
+
+Consulte o arquivos `LICENSE` deste repositório para o texto completo da licença.
