@@ -33,14 +33,14 @@ A pinagem adotada nesta versão do projeto é a seguinte:
 
 | Pino do Nokia 5110 | Ligação no ESP32 DevKit V1 |
 | --- | --- |
-| VCC | 3V3 |
-| GND | GND |
-| CLK | GPIO 18 |
-| DIN | GPIO 23 |
-| D/C | GPIO 17 |
-| CE/CS | GPIO 5 |
-| RST | GPIO 16 |
-| LIGHT / BL | 3V3 por meio de resistor de 220 ohms |
+| 1. RST | GPIO 16 |
+| 2. CE/CS | GPIO 5 |
+| 3. D/C | GPIO 17 |
+| 4. DIN | GPIO 23 |
+| 5. CLK | GPIO 18 |
+| 6. VCC | 3V3 |
+| 7. LIGHT / BL | 3V3 por meio de resistor de 220 ohms |
+| 8. GND | GND |
 
 Na biblioteca Adafruit PCD8544, a inicialização por software SPI usa a ordem de pinos `SCLK, DIN, DC, CS, RST`, por isso a declaração do objeto foi ajustada para `Adafruit_PCD8544(18, 23, 17, 5, 16)`.
 
