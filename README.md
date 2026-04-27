@@ -42,6 +42,10 @@ A pinagem adotada nesta versão do projeto é a seguinte:
 | 7. LIGHT / BL | 3V3 por meio de resistor de 220 ohms |
 | 8. GND | GND |
 
+![Esquemático de montagem] (ESP32.png).
+<p align="center">
+  <img src="ESP32.png" width="500">
+</p>
 Na biblioteca Adafruit PCD8544, a inicialização por software SPI usa a ordem de pinos `SCLK, DIN, DC, CS, RST`, por isso a declaração do objeto foi ajustada para `Adafruit_PCD8544(18, 23, 17, 5, 16)`.
 
 ### Ligação do resistor do backlight
