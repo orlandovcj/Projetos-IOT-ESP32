@@ -1,4 +1,5 @@
 # Estacao Meteorologica Completa
+
 # Arduino Mega 2560 + TFT 3.2" + DHT11 + ESP32
 
 Estacao meteorologica com exibicao de dados locais (temperatura e umidade
@@ -29,16 +30,16 @@ pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicacao serial.
        |-- NTP (hora real)            |-- Relogio via NTP
        |-- OpenWeatherMap             |-- Display TFT
        |-- AwesomeAPI (dolar)
-	   
+
 ## Hardware utilizado
 
-| Componente       | Modelo                            | Observacao                  |
-|---|---|---|
-| Microcontrolador | Arduino Mega 2560 R3              | Controlador principal       |
-| Microcontrolador | ESP32 DevKit V1 30 pinos          | Modulo Wi-Fi e APIs         |
+| Componente       | Modelo                           | Observacao                  |
+| ---------------- | -------------------------------- | --------------------------- |
+| Microcontrolador | Arduino Mega 2560 R3             | Controlador principal       |
+| Microcontrolador | ESP32 DevKit V1 30 pinos         | Modulo Wi-Fi e APIs         |
 | Display          | TFT 3.2" 240x320 TFT_320QDT_9341 | Controlador ILI9341         |
-| Shield display   | TFT LCD Mega Shield V2.2          | Adaptador para Arduino Mega |
-| Sensor           | DHT11                             | Temperatura e umidade local |
+| Shield display   | TFT LCD Mega Shield V2.2         | Adaptador para Arduino Mega |
+| Sensor           | DHT11                            | Temperatura e umidade local |
 
 ---
 
@@ -46,20 +47,20 @@ pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicacao serial.
 
 ### Arduino Mega
 
-| Biblioteca              | Instalacao                                  |
-|---|---|
-| UTFT v2.83              | Manual - site Rinky-Dink Electronics        |
-| DHT sensor library      | Arduino Library Manager (by Adafruit)       |
-| Adafruit Unified Sensor | Arduino Library Manager (by Adafruit)       |
+| Biblioteca              | Instalacao                            |
+| ----------------------- | ------------------------------------- |
+| UTFT v2.83              | Manual - site Rinky-Dink Electronics  |
+| DHT sensor library      | Arduino Library Manager (by Adafruit) |
+| Adafruit Unified Sensor | Arduino Library Manager (by Adafruit) |
 
 ### ESP32
 
-| Biblioteca   | Instalacao                                   |
-|---|---|
-| WiFi         | Incluida no ESP32 Arduino Core               |
-| HTTPClient   | Incluida no ESP32 Arduino Core               |
-| ArduinoJson  | Arduino Library Manager (by Benoit Blanchon) |
-| time.h       | Incluida no ESP32 Arduino Core               |
+| Biblioteca  | Instalacao                                   |
+| ----------- | -------------------------------------------- |
+| WiFi        | Incluida no ESP32 Arduino Core               |
+| HTTPClient  | Incluida no ESP32 Arduino Core               |
+| ArduinoJson | Arduino Library Manager (by Benoit Blanchon) |
+| time.h      | Incluida no ESP32 Arduino Core               |
 
 ## Ligacoes
 
@@ -79,7 +80,7 @@ O shield TFT cobre o pino de 5V e os GNDs do Mega.
 Solucao: alimentar o DHT11 via pinos digitais configurados como OUTPUT.
 
 | Pino DHT11 | Pino Mega 2560 | Observacao           |
-|---|---|---|
+| ---------- | -------------- | -------------------- |
 | VCC        | Pino 8         | OUTPUT HIGH como VCC |
 | GND        | Pino 11        | OUTPUT LOW como GND  |
 | DATA       | Pino 14        | Sinal de dados       |
@@ -87,12 +88,16 @@ Solucao: alimentar o DHT11 via pinos digitais configurados como OUTPUT.
 ### Comunicacao ESP32 -> Mega (UART Serial)
 
 | Pino ESP32   | Pino Mega 2560 | Observacao          |
-|---|---|---|
+| ------------ | -------------- | ------------------- |
 | TX2 (GPIO17) | Pino 19 (RX1)  | TX ESP32 -> RX Mega |
 | RX2 (GPIO16) | Pino 18 (TX1)  | RX ESP32 -> TX Mega |
 | GND          | Pino 11        | GND compartilhado   |
 
 Velocidade serial: 9600 baud em ambos os lados.
+
+<p align="center">
+  <img src="ESP32.png" width="500">
+</p>
 
 ## Protocolo de comunicacao
 
@@ -141,7 +146,7 @@ Edite antes de gravar:
 Fuso horario configurado para UTC-3 (Brasilia/Florianopolis):
 
     const long gmtOffset = -3 * 3600;
-	
+
 ## Layout da tela
 
     +--------------------------------------------------+
@@ -167,7 +172,7 @@ Fuso horario configurado para UTC-3 (Brasilia/Florianopolis):
 
     sprintf("%.1f", valor) gera caracteres invalidos na UTFT com AVR-GCC.
     Conversao manual adotada:
-
+    
     int parte_int = (int)valor;
     int parte_dec = (int)((valor - parte_int) * 10);
     if (parte_dec < 0) parte_dec = -parte_dec;
@@ -233,4 +238,3 @@ Consulte o arquivo LICENSE na raiz do repositorio.
 
 Orlando Castro
 Florianopolis, Santa Catarina, Brasil
-
