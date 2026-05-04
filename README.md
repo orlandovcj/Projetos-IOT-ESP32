@@ -1,49 +1,48 @@
 # Projetos de Automacao com Arduino e ESP32
 
-Repositorio dedicado ao registro de projetos, experimentos e aprendizados
+Repositório dedicado ao registro de projetos, experimentos e aprendizados
 com microcontroladores Arduino e ESP32, sensores, shields e displays.
 
-O objetivo nao e apenas guardar codigo, mas documentar o processo completo:
-ligacoes, problemas encontrados, solucoes descobertas e evolucao tecnica
+O objetivo nao é apenas guardar codigo, mas documentar o processo completo:
+ligacoes, problemas encontrados, soluções descobertas e evoluçao técnica
 ao longo do tempo.
 
 ---
 
 ## Objetivo
 
-Este repositorio serve como:
+Este repositório serve como:
 
-- **Laboratorio pessoal** de experimentos com hardware embarcado
-- **Base de conhecimento** com solucoes para problemas reais encontrados
-- **Portfolio tecnico** de projetos funcionais documentados
-- **Referencia futura** para reutilizar codigo, ligacoes e configuracoes
+- **Laboratório pessoal** de experimentos com hardware embarcado
+- **Base de conhecimento** com soluções para problemas reais encontrados
+- **Portfólio técnico** de projetos funcionais documentados
+- **Referência futura** para reutilizar código, ligações e configurações
 
 ---
 
 ## Plataformas utilizadas
 
-| Plataforma | Uso principal |
-|---|---|
-| Arduino Mega 2560 | Projetos com muitos pinos, displays paralelos, shields grandes |
-| Arduino Uno | Projetos simples, testes de sensores, prototipagem rapida |
-| ESP32 | Conectividade Wi-Fi, APIs, NTP, IoT |
-| Integracao Mega + ESP32 | Interface rica no Mega, dados de internet via ESP32 |
+| Plataforma              | Uso principal                                                  |
+| ----------------------- | -------------------------------------------------------------- |
+| Arduino Mega 2560       | Projetos com muitos pinos, displays paralelos, shields grandes |
+| Arduino Uno             | Projetos simples, testes de sensores, prototipagem rápida      |
+| ESP32                   | Conectividade Wi-Fi, APIs, NTP, IoT                            |
+| Integração Mega + ESP32 | Interface rica no Mega, dados de internet via ESP32            |
 
 ---
 
-## Organizacao do repositorio
+## Organização do repositório
 
-Cada projeto fica em sua propria pasta com nome descritivo.
-Dentro de cada pasta ha o codigo-fonte e um README especifico
-detalhando componentes, ligacoes, bibliotecas e aprendizados.
+Cada projeto fica em sua própria pasta com nome descritivo.
+Dentro de cada pasta há o codigo-fonte e um README específico
+detalhando componentes, ligações, bibliotecas e aprendizados.
 
     /
     ├── README.md
     ├── LICENSE
     ├── mega-tft32-dht11/
     │   ├── firmware/
-    │   │   └── estacao_mega_dht11/
-    │   │       └── estacao_mega_dht11.ino
+    │   │   └── estacao_mega_dht11.ino
     │   └── README.md
     ├── mega-tft32-esp32-weather/
     │   └── README.md
@@ -51,23 +50,23 @@ detalhando componentes, ligacoes, bibliotecas e aprendizados.
 
 ---
 
-## Convencao de nomes de pastas
+## Convenção de nomes de pastas
 
-As pastas seguem o padrao:
+As pastas seguem o padrão:
 
     [plataforma]-[componente_principal]-[funcionalidade]
 
-| Pasta | Descricao |
-|---|---|
-| mega-tft32-dht11 | Mega + TFT 3.2 + sensor DHT11 |
+| Pasta                    | Descrição                            |
+| ------------------------ | ------------------------------------ |
+| mega-tft32-dht11         | Mega + TFT 3.2 + sensor DHT11        |
 | mega-tft32-esp32-weather | Mega + TFT 3.2 + ESP32 + clima/dolar |
-| uno-oled-bme280 | Uno + OLED + sensor BME280 |
-| esp32-oled-weather | ESP32 + OLED + API de clima |
-| uno-shield-multifuncoes | Uno + shield multifuncoes |
+| uno-oled-bme280          | Uno + OLED + sensor BME280           |
+| esp32-oled-weather       | ESP32 + OLED + API de clima          |
+| uno-shield-multifuncoes  | Uno + shield multifuncoes            |
 
 ---
 
-## Componentes do laboratorio
+## Componentes do laboratório
 
 ### Microcontroladores
 
@@ -84,13 +83,13 @@ As pastas seguem o padrao:
 ### Sensores
 
 - DHT11 — temperatura e umidade
-- DHT22 — temperatura e umidade (maior precisao)
+- DHT22 — temperatura e umidade (maior precisão)
 - LDR — luminosidade
-- LM35 — temperatura analogica
+- LM35 — temperatura analógica
 
-### Shields e modulos
+### Shields e módulos
 
-- Shield multifuncoes para Arduino Uno
+- Shield multifunções para Arduino Uno
 - TFT LCD Mega Shield V2.2
 
 ---
@@ -100,14 +99,14 @@ As pastas seguem o padrao:
 ### Display TFT 3.2 ILI9341 + Mega Shield V2.2
 
 - O display retorna ID 0x0404 — considerado write-only por MCUFRIEND_kbv
-- O unico construtor que funciona com esse conjunto e CTE32_R2 na UTFT:
+- O único construtor que funciona com esse conjunto e CTE32_R2 na UTFT:
     UTFT myGLCD(CTE32_R2, 38, 39, 40, 41);
-- A biblioteca MCUFRIEND_kbv nao inicializa corretamente esse shield
+- A biblioteca MCUFRIEND_kbv não inicializa corretamente esse shield
 - Usar sempre a UTFT v2.83 oficial do site Rinky-Dink Electronics
 
 ### sprintf com float no AVR/Mega
 
-- sprintf("%.1f", valor) gera caracteres invalidos na UTFT com AVR-GCC
+- sprintf("%.1f", valor) gera caracteres inválidos na UTFT com AVR-GCC
 - Solucao: converter float manualmente:
     int parte_int = (int)valor;
     int parte_dec = (int)((valor - parte_int) * 10);
@@ -118,13 +117,12 @@ As pastas seguem o padrao:
 
 - O shield TFT cobre o pino de 5V do Mega
 - Alimentar DHT11 via pino digital como OUTPUT HIGH funciona (consumo ~2.5mA)
-- Pinos com PWM (9, 10) causam interferencia no sinal DATA do DHT11
 - Pinos 8 (VCC) e 14 (DATA) mostraram-se estaveis e sem conflitos
 - O barramento paralelo do TFT usa D22-D41; manter DATA do DHT11 fora dessa faixa
 
 ### Comunicacao ESP32 + Mega
 
-- Usar Serial1 no Mega (pinos 18/19) para nao conflitar com USB/debug
+- Usar Serial1 no Mega (pinos 18/19) para não conflitar com USB/debug
 - Usar Serial2 no ESP32 (GPIO 16/17)
 - Protocolo de linha simples com separador ; e terminador \n e suficiente
 
@@ -132,7 +130,7 @@ As pastas seguem o padrao:
 
 ## Roadmap de projetos
 
-### Concluidos
+### Concluídos
 
 - [x] Estacao meteorologica local — Mega + TFT 3.2" + DHT11
 
@@ -154,22 +152,22 @@ As pastas seguem o padrao:
 
 ---
 
-## Como usar este repositorio
+## Como usar este repositório
 
-Cada projeto e independente. Para reproduzir qualquer um:
+Cada projeto é independente. Para reproduzir qualquer um:
 
 1. Acesse a pasta do projeto
-2. Leia o README.md especifico
+2. Leia o README.md específico
 3. Abra o .ino na Arduino IDE
 4. Instale as bibliotecas listadas
-5. Ajuste os pinos conforme sua montagem se necessario
+5. Ajuste os pinos conforme sua montagem se necessário
 6. Grave na placa correta
 
 ---
 
-## Licenca
+## Licença
 
-O codigo-fonte de todos os projetos neste repositorio e distribuido sob
+O código-fonte de todos os projetos neste repositório é distribuido sob
 a licenca MIT. Consulte o arquivo LICENSE para mais detalhes.
 
 ---
