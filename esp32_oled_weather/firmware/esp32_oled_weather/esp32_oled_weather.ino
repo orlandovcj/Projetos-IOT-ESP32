@@ -9,9 +9,9 @@
 // Ordem: CLK, DIN, D/C, CE, RST
 Adafruit_PCD8544 display = Adafruit_PCD8544(18, 23, 17, 5, 16);
 
-const char* ssid = "Aledani";
-const char* password = "carlinhos7423";
-const char* weatherApiKey = "be5ed92e9931ce5bb84ac79e89180a47";
+const char* ssid = "SEU_WIFI";
+const char* password = "SUA_SENHA";
+const char* weatherApiKey = "SUA_API_KEY";
 
 String lat = "-27.6956";
 String lon = "-48.4911";
