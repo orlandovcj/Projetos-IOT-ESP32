@@ -1,150 +1,183 @@
-# Painel IoT com ESP32, Nokia 5110, clima e cotação do dólar
+# Projetos de Automacao com Arduino e ESP32
 
-Projeto de painel informativo com **ESP32 DevKit V1** e **display Nokia 5110 (PCD8544)** para exibir **temperatura**, **umidade**, **cotação USD/BRL**, **variação do dólar** e **hora via NTP**. O display Nokia 5110 usa interface serial compatível com SPI e opera em 3,3 V, o que o torna adequado para uso com ESP32.
+Repositorio dedicado ao registro de projetos, experimentos e aprendizados
+com microcontroladores Arduino e ESP32, sensores, shields e displays.
 
-A versão atual do firmware usa a API da **OpenWeather** para obter o clima atual e a **AwesomeAPI** para obter a cotação do dólar comercial. A OpenWeather retorna dados como `main.temp`, `main.humidity` e `weather[0].main`, enquanto a AwesomeAPI retorna campos como `USDBRL.bid` e `USDBRL.pctChange` no endpoint `json/last/USD-BRL`.
+O objetivo nao e apenas guardar codigo, mas documentar o processo completo:
+ligacoes, problemas encontrados, solucoes descobertas e evolucao tecnica
+ao longo do tempo.
 
-## Funcionalidades
+---
 
-- Exibição da temperatura em destaque no display.
-- Exibição da umidade relativa do ar.
-- Exibição da cotação USD/BRL.
-- Exibição da variação percentual do dólar com seta de alta ou baixa.
-- Exibição da hora atual sincronizada via NTP.
-- Ícones simples de clima desenhados por software com Adafruit GFX.
-- Tela inicial com identidade visual do projeto usando elementos gráficos simples.
+## Objetivo
 
-## Componentes utilizados
+Este repositorio serve como:
 
-| Componente | Função no projeto |
-| --- | --- |
-| ESP32 DevKit V1 | Microcontrolador principal com Wi‑Fi integrado para consumir APIs e atualizar o display |
-| Display Nokia 5110 / PCD8544 | Interface gráfica monocromática 84x48 para exibir os dados |
-| Resistor de 220 ohms | Limitação de corrente do backlight do display |
-| Protoboard | Montagem sem solda |
-| Jumpers macho-macho | Ligações entre ESP32 e display |
-| Cabo USB | Alimentação e gravação do firmware |
+- **Laboratorio pessoal** de experimentos com hardware embarcado
+- **Base de conhecimento** com solucoes para problemas reais encontrados
+- **Portfolio tecnico** de projetos funcionais documentados
+- **Referencia futura** para reutilizar codigo, ligacoes e configuracoes
 
-A resolução de 84x48 pixels do Nokia 5110 é suficiente para pequenos dashboards e permite desenhar texto, linhas, triângulos, círculos e bitmaps simples usando bibliotecas gráficas compatíveis.
+---
 
-## Ligações elétricas
+## Plataformas utilizadas
 
-A pinagem adotada nesta versão do projeto é a seguinte:
+| Plataforma | Uso principal |
+|---|---|
+| Arduino Mega 2560 | Projetos com muitos pinos, displays paralelos, shields grandes |
+| Arduino Uno | Projetos simples, testes de sensores, prototipagem rapida |
+| ESP32 | Conectividade Wi-Fi, APIs, NTP, IoT |
+| Integracao Mega + ESP32 | Interface rica no Mega, dados de internet via ESP32 |
 
-| Pino do Nokia 5110 | Ligação no ESP32 DevKit V1 |
-| --- | --- |
-| 1. RST | GPIO 16 |
-| 2. CE/CS | GPIO 5 |
-| 3. D/C | GPIO 17 |
-| 4. DIN | GPIO 23 |
-| 5. CLK | GPIO 18 |
-| 6. VCC | 3V3 |
-| 7. LIGHT / BL | 3V3 por meio de resistor de 220 ohms |
-| 8. GND | GND |
+---
 
-<p align="center">
-  <img src="ESP32.png" width="500">
-</p>
+## Organizacao do repositorio
 
-Na biblioteca Adafruit PCD8544, a inicialização por software SPI usa a ordem de pinos `SCLK, DIN, DC, CS, RST`, por isso a declaração do objeto foi ajustada para `Adafruit_PCD8544(18, 23, 17, 5, 16)`.
+Cada projeto fica em sua propria pasta com nome descritivo.
+Dentro de cada pasta ha o codigo-fonte e um README especifico
+detalhando componentes, ligacoes, bibliotecas e aprendizados.
 
-### Ligação do resistor do backlight
+    /
+    ├── README.md
+    ├── LICENSE
+    ├── mega-tft32-dht11/
+    │   ├── firmware/
+    │   │   └── estacao_mega_dht11/
+    │   │       └── estacao_mega_dht11.ino
+    │   └── README.md
+    ├── mega-tft32-esp32-weather/
+    │   └── README.md
+    └── ...
 
-O resistor de **220 ohms** deve ser ligado **em série** com o pino de iluminação do display, no caminho entre o **3V3** do ESP32 e o pino **LIGHT/BL/LED** do Nokia 5110. Esse arranjo limita a corrente do LED de backlight e é prática comum em módulos desse tipo.
+---
 
-Exemplo simplificado:
+## Convencao de nomes de pastas
 
-```text
-ESP32 3V3 ----[220R]---- BL/LIGHT do Nokia 5110
-ESP32 GND --------------- GND do Nokia 5110
-```
+As pastas seguem o padrao:
 
-## Bibliotecas utilizadas
+    [plataforma]-[componente_principal]-[funcionalidade]
 
-Instalar as seguintes bibliotecas na Arduino IDE:
+| Pasta | Descricao |
+|---|---|
+| mega-tft32-dht11 | Mega + TFT 3.2 + sensor DHT11 |
+| mega-tft32-esp32-weather | Mega + TFT 3.2 + ESP32 + clima/dolar |
+| uno-oled-bme280 | Uno + OLED + sensor BME280 |
+| esp32-oled-weather | ESP32 + OLED + API de clima |
+| uno-shield-multifuncoes | Uno + shield multifuncoes |
 
-- **Adafruit PCD8544 Nokia 5110 LCD library** — controle do display PCD8544.
-- **Adafruit GFX Library** — primitivas gráficas, texto, linhas, triângulos, retângulos e círculos.
-- **ArduinoJson** — leitura do JSON retornado pelas APIs.
+---
 
-Além disso, o código usa bibliotecas do ecossistema ESP32/Arduino já disponíveis com a plataforma da placa:
+## Componentes do laboratorio
 
-- `WiFi.h`
-- `HTTPClient.h`
-- `time.h`
+### Microcontroladores
 
-A plataforma correta da placa na Arduino IDE é o pacote **esp32 by Espressif Systems**, com seleção típica da placa como **ESP32 Dev Module** em muitas DevKit V1.
+- Arduino Mega 2560 R3
+- Arduino Uno R3
+- ESP32 (placa de desenvolvimento)
 
-## APIs utilizadas
+### Displays
 
-### Clima
+- TFT 3.2" 240x320 TFT_320QDT_9341 (controlador ILI9341)
+- TFT LCD Mega Shield V2.2
+- Nokia 5110 LCD (controlador PCD8544)
 
-A API de clima usada é a **OpenWeather Current Weather API**, com consulta por latitude e longitude. O firmware utiliza parâmetros como `lat`, `lon`, `appid`, `units=metric` e `lang=pt_br` para receber temperatura em Celsius e dados do clima atual.
+### Sensores
 
-Exemplo de endpoint:
+- DHT11 — temperatura e umidade
+- DHT22 — temperatura e umidade (maior precisao)
+- LDR — luminosidade
+- LM35 — temperatura analogica
 
-```text
-https://api.openweathermap.org/data/2.5/weather?lat=-27.5954&lon=-48.5480&appid=SUA_CHAVE&units=metric&lang=pt_br
-```
+### Shields e modulos
 
-Campos usados no firmware:
+- Shield multifuncoes para Arduino Uno
+- TFT LCD Mega Shield V2.2
 
-- `main.temp`
-- `main.humidity`
-- `weather[0].main`
+---
 
-### Cotação do dólar
+## Aprendizados registrados
 
-A API de câmbio usada é a **AwesomeAPI**, com o endpoint `https://economia.awesomeapi.com.br/json/last/USD-BRL`. O JSON retornado inclui o objeto `USDBRL`, contendo valores como `bid`, `ask`, `pctChange` e `create_date`.
+### Display TFT 3.2 ILI9341 + Mega Shield V2.2
 
-Campos usados no firmware:
+- O display retorna ID 0x0404 — considerado write-only por MCUFRIEND_kbv
+- O unico construtor que funciona com esse conjunto e CTE32_R2 na UTFT:
+    UTFT myGLCD(CTE32_R2, 38, 39, 40, 41);
+- A biblioteca MCUFRIEND_kbv nao inicializa corretamente esse shield
+- Usar sempre a UTFT v2.83 oficial do site Rinky-Dink Electronics
 
-- `USDBRL.bid`
-- `USDBRL.pctChange`
+### sprintf com float no AVR/Mega
 
-## Estrutura visual do firmware atual
+- sprintf("%.1f", valor) gera caracteres invalidos na UTFT com AVR-GCC
+- Solucao: converter float manualmente:
+    int parte_int = (int)valor;
+    int parte_dec = (int)((valor - parte_int) * 10);
+    if (parte_dec < 0) parte_dec = -parte_dec;
+    sprintf(buf, "%d.%d", parte_int, parte_dec);
 
-A versão mais recente do script implementa três áreas principais de interface:
+### DHT11 com shield TFT no Mega
 
-1. **Tela inicial** — mostra ícones simples representando clima e dólar, além do título do projeto.
-2. **Tela de clima** — mostra o título `CLIMA`, um ícone conforme a condição da OpenWeather, temperatura em destaque, umidade e hora atual.
-3. **Tela de dólar** — mostra o título `USD/BRL`, o valor atual, seta de tendência e uma barra visual proporcional à intensidade da variação percentual.
+- O shield TFT cobre o pino de 5V do Mega
+- Alimentar DHT11 via pino digital como OUTPUT HIGH funciona (consumo ~2.5mA)
+- Pinos com PWM (9, 10) causam interferencia no sinal DATA do DHT11
+- Pinos 8 (VCC) e 14 (DATA) mostraram-se estaveis e sem conflitos
+- O barramento paralelo do TFT usa D22-D41; manter DATA do DHT11 fora dessa faixa
 
-## Ícones e lógica visual
+### Comunicacao ESP32 + Mega
 
-A condição principal do clima vem de `weather[0].main`, e o firmware a converte em ícones simples desenhados por software. Categorias como `Clear`, `Clouds`, `Rain`, `Drizzle`, `Thunderstorm`, `Mist`, `Fog`, `Haze` e `Smoke` podem ser tratadas diretamente na lógica de renderização.
+- Usar Serial1 no Mega (pinos 18/19) para nao conflitar com USB/debug
+- Usar Serial2 no ESP32 (GPIO 16/17)
+- Protocolo de linha simples com separador ; e terminador \n e suficiente
 
-A biblioteca Adafruit GFX disponibiliza funções como `drawLine()`, `drawCircle()`, `fillCircle()`, `drawRect()`, `fillRect()` e `fillTriangle()`, usadas no projeto para desenhar ícones, molduras, setas e barras sem depender de imagens externas.
+---
 
-#### Como usar
+## Roadmap de projetos
 
-1. Instalar o pacote de placas **esp32 by Espressif Systems** na Arduino IDE.
-2. Instalar as bibliotecas listadas acima.
-3. Selecionar a placa **ESP32 Dev Module** na IDE, se compatível com a sua DevKit V1.
-4. Ajustar os valores de `ssid`, `password` e `weatherApiKey` no código.
-5. Revisar `lat` e `lon` para a localização desejada.
-6. Compilar e enviar o sketch para o ESP32.
+### Concluidos
 
-## Observações práticas
+- [x] Estacao meteorologica local — Mega + TFT 3.2" + DHT11
 
-A OpenWeather pode retornar erro 401 quando a chave da API estiver inválida ou ainda não ativada, o que impede o preenchimento dos dados de clima.
+### Em desenvolvimento
 
-A AwesomeAPI, por outro lado, permite consultar `USD-BRL` diretamente e retorna um JSON simples, adequado para microcontroladores com parsing leve de dados.
+- [ ] Integracao ESP32 — hora NTP + clima externo + cotacao do dolar
+- [ ] Touch screen — navegacao entre telas no TFT 3.2"
 
-O display Nokia 5110 pode exigir ajuste fino de contraste via `display.setContrast(...)`, pois a leitura visual varia de módulo para módulo e conforme a alimentação utilizada.
+### Planejados
 
-## Melhorias futuras sugeridas
+- [ ] Modulo RTC DS3231 — hora real sem depender de Wi-Fi
+- [ ] Estacao com BME280 — pressao atmosferica + temperatura + umidade
+- [ ] Monitor de qualidade do ar — sensor MQ-135
+- [ ] Alarme de movimento — sensor PIR
+- [ ] Dashboard com ESP32 + OLED — versao compacta da estacao
+- [ ] Data logger com cartao SD — registro historico de sensores
+- [ ] Automacao com rele — controle de dispositivos por temperatura
+- [ ] Jogo no Nokia 5110 — Snake / menu interativo
 
-- Remover `delay()` e trocar a rotação de telas por `millis()` para deixar o firmware mais responsivo.
-- Adicionar botão físico para troca manual de telas.
-- Implementar mais ícones climáticos.
-- Adicionar previsão estendida.
-- Controlar o backlight por GPIO para modo noturno.
+---
 
-## Licença
+## Como usar este repositorio
 
-O código-fonte deste projeto é distribuído sob a licença MIT. Isso significa que você pode usar, copiar, modificar e distribuir o firmware, inclusive em projetos pessoais ou comerciais, desde que mantenha o aviso de copyright e o texto da licença.
+Cada projeto e independente. Para reproduzir qualquer um:
 
-A documentação, diagramas e imagens do projeto podem ser distribuídos sob Creative Commons Attribution 4.0 International (CC BY 4.0), o que permite reutilização e adaptação com a devida atribuição ao autor.
+1. Acesse a pasta do projeto
+2. Leia o README.md especifico
+3. Abra o .ino na Arduino IDE
+4. Instale as bibliotecas listadas
+5. Ajuste os pinos conforme sua montagem se necessario
+6. Grave na placa correta
 
-Consulte o arquivos `LICENSE` deste repositório para o texto completo da licença.
+---
+
+## Licenca
+
+O codigo-fonte de todos os projetos neste repositorio e distribuido sob
+a licenca MIT. Consulte o arquivo LICENSE para mais detalhes.
+
+---
+
+## Autor
+
+**Orlando Castro**
+Florianopolis, Santa Catarina, Brasil
+
+Desenvolvedor de software com interesse em sistemas embarcados, IoT,
+automacao e analise de dados.
