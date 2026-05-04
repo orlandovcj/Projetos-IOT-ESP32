@@ -1,10 +1,10 @@
-# Projetos de Automacao com Arduino e ESP32
+# Projetos de Automação com Arduíno e ESP32
 
 Repositório dedicado ao registro de projetos, experimentos e aprendizados
-com microcontroladores Arduino e ESP32, sensores, shields e displays.
+com microcontroladores Arduíno e ESP32, sensores, shields e displays.
 
 O objetivo nao é apenas guardar codigo, mas documentar o processo completo:
-ligacoes, problemas encontrados, soluções descobertas e evoluçao técnica
+ligações, problemas encontrados, soluções descobertas e evoluçao técnica
 ao longo do tempo.
 
 ---
