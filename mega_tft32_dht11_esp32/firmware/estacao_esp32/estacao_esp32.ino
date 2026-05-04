@@ -4,8 +4,8 @@
 #include <time.h>
 
 // Wi-Fi
-const char* ssid = "Aledani";
-const char* password = "carlinhos7423";
+const char* ssid = "SEU_WIFI";
+const char* password = "SUA_SENHA";
 
 // NTP
 const char* ntpServer   = "pool.ntp.org";
@@ -14,7 +14,7 @@ const int   dstOffset   = 0;
 
 // APIs
 // OpenWeatherMap - crie conta gratis em openweathermap.org
-const String OWM_KEY    = "be5ed92e9931ce5bb84ac79e89180a47";
+const String OWM_KEY    = "SUA_API_KEY";
 const String OWM_CITY   = "Florianopolis,BR";
 const String OWM_URL    = "http://api.openweathermap.org/data/2.5/weather?q="
                           + OWM_CITY + "&appid=" + OWM_KEY
