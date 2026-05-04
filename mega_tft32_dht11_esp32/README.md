@@ -96,7 +96,7 @@ Solucao: alimentar o DHT11 via pinos digitais configurados como OUTPUT.
 Velocidade serial: 9600 baud em ambos os lados.
 
 <p align="center">
-  <img src="ESP32.png" width="500">
+  <img src="ESP-ROOM-32.png" width="500">
 </p>
 
 ## Protocolo de comunicacao
