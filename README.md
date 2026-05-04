@@ -133,10 +133,10 @@ As pastas seguem o padrão:
 ### Concluídos
 
 - [x] Estacao meteorologica local — Mega + TFT 3.2" + DHT11
+- [x] Integracao ESP32 — hora NTP + clima externo + cotacao do dolar
 
 ### Em desenvolvimento
 
-- [ ] Integracao ESP32 — hora NTP + clima externo + cotacao do dolar
 - [ ] Touch screen — navegacao entre telas no TFT 3.2"
 
 ### Planejados
