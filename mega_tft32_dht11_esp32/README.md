@@ -1,14 +1,10 @@
 # Estação Meteorológica Completa
 
-# Ardui+
-
-# no Mega 2560 + TFT 3.2" + DHT11 + ESP32
+# Arduino Mega 2560 + TFT 3.2" + DHT11 + ESP32
 
 Estação meteorológica com exibição de dados locais (temperatura e umidade
 via DHT11) e dados externos (clima, cotação do dolar e hora NTP) obtidos
 pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicação serial.
-
-
 
 <p align="center">
   <img src="estacao.png" width="500">
