@@ -1,24 +1,32 @@
-# Estacao Meteorologica Completa
+# Estação Meteorológica Completa
 
-# Arduino Mega 2560 + TFT 3.2" + DHT11 + ESP32
+# Ardui+
 
-Estacao meteorologica com exibicao de dados locais (temperatura e umidade
-via DHT11) e dados externos (clima, cotacao do dolar e hora NTP) obtidos
-pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicacao serial.
+# no Mega 2560 + TFT 3.2" + DHT11 + ESP32
+
+Estação meteorológica com exibição de dados locais (temperatura e umidade
+via DHT11) e dados externos (clima, cotação do dolar e hora NTP) obtidos
+pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicação serial.
+
+
+
+<p align="center">
+  <img src="estacao.png" width="500">
+</p>
 
 ---
 
 ## Funcionalidades
 
 - Temperatura e umidade locais via sensor DHT11
-- Hora real sincronizada via NTP (sem RTC fisico)
+- Hora real sincronizada via NTP (sem RTC físico)
 - Temperatura e umidade externas via API OpenWeatherMap
-- Cotacao do dolar (USD/BRL) via AwesomeAPI
-- Descricao do clima no rodape da tela
-- Atualizacao da hora a cada 1 segundo
-- Atualizacao dos dados externos a cada 30 segundos
-- Atualizacao do sensor local a cada 5 segundos
-- Interface grafica colorida no TFT 3.2" 240x320
+- Cotação do dolar (USD/BRL) via AwesomeAPI
+- Descrição do clima no rodapé da tela
+- Atualização da hora a cada 1 segundo
+- Atualização dos dados externos a cada 30 segundos
+- Atualização do sensor local a cada 5 segundos
+- Interface gráfica colorida no TFT 3.2" 240x320
 
 ---
 
@@ -33,10 +41,10 @@ pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicacao serial.
 
 ## Hardware utilizado
 
-| Componente       | Modelo                           | Observacao                  |
+| Componente       | Modelo                           | Observação                  |
 | ---------------- | -------------------------------- | --------------------------- |
 | Microcontrolador | Arduino Mega 2560 R3             | Controlador principal       |
-| Microcontrolador | ESP32 DevKit V1 30 pinos         | Modulo Wi-Fi e APIs         |
+| Microcontrolador | ESP32 DevKit V1 30 pinos         | Módulo Wi-Fi e APIs         |
 | Display          | TFT 3.2" 240x320 TFT_320QDT_9341 | Controlador ILI9341         |
 | Shield display   | TFT LCD Mega Shield V2.2         | Adaptador para Arduino Mega |
 | Sensor           | DHT11                            | Temperatura e umidade local |
@@ -47,7 +55,7 @@ pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicacao serial.
 
 ### Arduino Mega
 
-| Biblioteca              | Instalacao                            |
+| Biblioteca              | Instalação                            |
 | ----------------------- | ------------------------------------- |
 | UTFT v2.83              | Manual - site Rinky-Dink Electronics  |
 | DHT sensor library      | Arduino Library Manager (by Adafruit) |
@@ -55,20 +63,20 @@ pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicacao serial.
 
 ### ESP32
 
-| Biblioteca  | Instalacao                                   |
+| Biblioteca  | Instalação                                   |
 | ----------- | -------------------------------------------- |
 | WiFi        | Incluida no ESP32 Arduino Core               |
 | HTTPClient  | Incluida no ESP32 Arduino Core               |
 | ArduinoJson | Arduino Library Manager (by Benoit Blanchon) |
 | time.h      | Incluida no ESP32 Arduino Core               |
 
-## Ligacoes
+## Ligações
 
 ### Display TFT + Shield
 
 O display TFT_320QDT_9341 e encaixado no TFT LCD Mega Shield V2.2,
 que por sua vez e encaixado no Arduino Mega 2560.
-Nenhuma fiacao adicional e necessaria para o display.
+Nenhuma fiação adicional e necessaria para o display.
 
 Construtor UTFT:
 
@@ -77,17 +85,17 @@ Construtor UTFT:
 ### Sensor DHT11
 
 O shield TFT cobre o pino de 5V e os GNDs do Mega.
-Solucao: alimentar o DHT11 via pinos digitais configurados como OUTPUT.
+Solução: alimentar o DHT11 via pinos digitais configurados como OUTPUT.
 
-| Pino DHT11 | Pino Mega 2560 | Observacao           |
+| Pino DHT11 | Pino Mega 2560 | Observação           |
 | ---------- | -------------- | -------------------- |
 | VCC        | Pino 8         | OUTPUT HIGH como VCC |
 | GND        | Pino 11        | OUTPUT LOW como GND  |
 | DATA       | Pino 14        | Sinal de dados       |
 
-### Comunicacao ESP32 -> Mega (UART Serial)
+### Comunicação ESP32 -> Mega (UART Serial)
 
-| Pino ESP32   | Pino Mega 2560 | Observacao          |
+| Pino ESP32   | Pino Mega 2560 | Observação          |
 | ------------ | -------------- | ------------------- |
 | TX2 (GPIO17) | Pino 19 (RX1)  | TX ESP32 -> RX Mega |
 | RX2 (GPIO16) | Pino 18 (TX1)  | RX ESP32 -> TX Mega |
@@ -99,7 +107,7 @@ Velocidade serial: 9600 baud em ambos os lados.
   <img src="ESP-ROOM-32.png" width="500">
 </p>
 
-## Protocolo de comunicacao
+## Protocolo de comunicação
 
 O ESP32 envia duas categorias de mensagens ao Mega via serial:
 
@@ -122,7 +130,7 @@ e ; como separador de campos.
 
 - Site: openweathermap.org
 - Plano: gratuito (ate 1000 chamadas/dia)
-- Dados: temperatura, umidade, descricao do clima
+- Dados: temperatura, umidade, descrição do clima
 - Requer cadastro e API Key gratuita
 
 ### AwesomeAPI
@@ -134,7 +142,7 @@ e ; como separador de campos.
 
 ---
 
-## Configuracao do ESP32
+## Configuração do ESP32
 
 Edite antes de gravar:
 
@@ -170,15 +178,15 @@ Fuso horario configurado para UTC-3 (Brasilia/Florianopolis):
 
 ### Bug do sprintf com float no AVR/Mega
 
-    sprintf("%.1f", valor) gera caracteres invalidos na UTFT com AVR-GCC.
-    Conversao manual adotada:
+    sprintf("%.1f", valor) gera caracteres inválidos na UTFT com AVR-GCC.
+    Conversão manual adotada:
     
     int parte_int = (int)valor;
     int parte_dec = (int)((valor - parte_int) * 10);
     if (parte_dec < 0) parte_dec = -parte_dec;
     sprintf(buf, "%d.%d", parte_int, parte_dec);
 
-### Alimentacao do DHT11 via pinos digitais
+### Alimentação do DHT11 via pinos digitais
 
     Shield TFT ocupa o 5V e GNDs do Mega.
     Solucao: pinos digitais como VCC e GND:
@@ -188,12 +196,12 @@ Fuso horario configurado para UTC-3 (Brasilia/Florianopolis):
 ### GPIO16 e GPIO17 no ESP32 DevKit V1 30 pinos
 
     Marcados como TX2 e RX2 na serigrafia, lado direito da placa,
-    proximos ao GND e 3V3 na extremidade inferior (lado do USB).
+    próximos ao GND e 3V3 na extremidade inferior (lado do USB).
 
 ### Construtor do display
 
     Display retorna ID 0x0404 (write-only).
-    Unico construtor funcional: CTE32_R2 na UTFT v2.83.
+    Único construtor funcional: CTE32_R2 na UTFT v2.83.
 
 ## Estrutura do repositorio
 
@@ -207,7 +215,7 @@ Fuso horario configurado para UTC-3 (Brasilia/Florianopolis):
 
 ---
 
-## Sequencia de inicializacao
+## Sequencia de inicialização
 
 1. Grave o firmware no Mega
 2. Grave o firmware no ESP32
@@ -220,9 +228,9 @@ Fuso horario configurado para UTC-3 (Brasilia/Florianopolis):
 
 ## Proximos passos planejados
 
-- [ ] Touch screen para navegacao entre telas
-- [ ] Modulo RTC DS3231 para hora offline
-- [ ] Grafico historico de temperatura
+- [ ] Touch screen para navegação entre telas
+- [ ] Módulo RTC DS3231 para hora offline
+- [ ] Gráfico histórico de temperatura
 - [ ] Alertas de temperatura e umidade
 
 ---
@@ -230,7 +238,7 @@ Fuso horario configurado para UTC-3 (Brasilia/Florianopolis):
 ## Licenca
 
 Distribuido sob a licenca MIT.
-Consulte o arquivo LICENSE na raiz do repositorio.
+Consulte o arquivo LICENSE na raiz do repositório.
 
 ---
 
