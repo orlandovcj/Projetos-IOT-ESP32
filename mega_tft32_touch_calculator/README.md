@@ -1,5 +1,10 @@
 # mega_tft32_touch_calculator
 
+
+<p align="center">
+  <img src="calculadora.jpeg" width="500">
+</p>
+
 Calculadora touch desenvolvida com Arduino Mega 2560, display TFT 3.2" colorido e touch resistivo, com suporte às quatro operações matemáticas básicas e raiz quadrada. O projeto reutiliza a mesma base de hardware já validada em testes anteriores com display ILI9341 e controlador de toque XPT2046, incluindo os ajustes práticos de calibração e temporização entre UTFT e URTouch.
 
 Este projeto foi pensado para servir como exemplo de interface gráfica embarcada orientada a toque em Arduino. Além da lógica de cálculo, ele demonstra desenho de botões na tela, mapeamento de coordenadas do touch para pixels do display, atualização parcial da área de resultado e tratamento de erros como divisão por zero e raiz quadrada de número negativo.
