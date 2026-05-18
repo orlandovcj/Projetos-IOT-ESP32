@@ -40,16 +40,23 @@ detalhando componentes, ligações, bibliotecas e aprendizados.
      /
         ├── README.md
         ├── LICENSE
-        ├── mega-tft32-dht11/
+        ├── esp32_oled_weather/
+        │   ├── firmware/
+        │   │   └── esp32_oled_weather/
+        │   │       └── esp32_oled_weather.ino
+        │   └── ESP32.png
+        │   └── LICENSE
+        │   └── README.md
+        ├── mega_tft32_dht11/
         │   ├── firmware/
         │   │   └── estacao_mega_dht11/
         │   │       └── estacao_mega_dht11.ino
         │   └── README.md
-        ├── mega-tft32-esp32-weather/
+        ├── mega_tft32_dht11_esp32/
         │   ├── firmware/
-        │   │   ├── mega/
-        │   │   │   └── estacao_mega_esp32.ino
-        │   │   └── esp32/
+        │   │   ├── estacao_mega_dht11_esp32/
+        │   │   │   └── estacao_mega_dht11_esp32.ino
+        │   │   └── estacao_esp32/
         │   │       └── estacao_esp32.ino
         │   └── README.md
         ├── mega_tft32_calibration/
@@ -189,6 +196,7 @@ As pastas seguem o padrão:
 ### Concluídos
 
 - [x] Estacao meteorologica local — Mega + TFT 3.2" + DHT11
+
 - [x] Integracao ESP32 — hora NTP + clima externo + cotacao do dolar
   
   Estacao meteorologica local — Mega + TFT 3.2" + DHT11
@@ -196,10 +204,6 @@ As pastas seguem o padrão:
 - [x] - [x] Integracao ESP32 — hora NTP + clima externo + cotacao do dolar
   
   Calibração e configuração do TFT 3.2" com touch XPT2046
-  
-  
-  
-  
 
 ### Em desenvolvimento
 
