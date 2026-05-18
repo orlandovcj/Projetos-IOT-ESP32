@@ -63,6 +63,10 @@ detalhando componentes, ligações, bibliotecas e aprendizados.
         │   ├── firmware/
         │   │   └── mega_tft32_calibration.ino
         │   └── README.md
+        ├── mega_tft32_touch_calculator/
+        │   ├── firmware/
+        │   │   └── mega_tft32_touch_calculator.ino
+        │   └── README.md
         └── ...
 
 ---
@@ -197,13 +201,15 @@ As pastas seguem o padrão:
 
 - [x] Estacao meteorologica local — Mega + TFT 3.2" + DHT11
 
-- [x] Integracao ESP32 — hora NTP + clima externo + cotacao do dolar
-  
-  Estacao meteorologica local — Mega + TFT 3.2" + DHT11
+- [x] Integração ESP32 - hora NTP + clima externo + cotação do dolar
 
-- [x] - [x] Integracao ESP32 — hora NTP + clima externo + cotacao do dolar
-  
-  Calibração e configuração do TFT 3.2" com touch XPT2046
+- [x] Estação meteorológica local - Mega + TFT 3.2" + HDT11
+
+- [x] Calibração e configuração do TFT 3,2" com touch XPT2046
+
+- [x] Calculadora touch simples
+
+
 
 ### Em desenvolvimento
 
