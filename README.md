@@ -209,8 +209,6 @@ As pastas seguem o padrão:
 
 - [x] Calculadora touch simples
 
-
-
 ### Em desenvolvimento
 
 - [ ] Touch screen — navegacao entre telas no TFT 3.2"
@@ -225,6 +223,11 @@ As pastas seguem o padrão:
 - [ ] Data logger com cartao SD — registro historico de sensores
 - [ ] Automacao com rele — controle de dispositivos por temperatura
 - [ ] Jogo no Nokia 5110 — Snake / menu interativo
+- [ ] Configurador WiFi via BLE - configurar rede sem regravar firmware
+- [ ] Monitor BT Serial - visualizar dados da estação meteorologica no celular
+- [ ] Alertas BLE - notificação no celular por limite de temperatura/umidade
+- [ ] Controle de relé via BT - automação pelo celular
+- [ ] ESP32 bridge BT-Serial - celular -> ESP32 -> Mega
 
 ---
 
