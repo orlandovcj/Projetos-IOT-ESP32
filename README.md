@@ -40,35 +40,35 @@ detalhando componentes, ligações, bibliotecas e aprendizados.
      /
         ├── README.md
         ├── LICENSE
-        ├── uno_rgb_led_intro/
+        ├── 01_uno_rgb_led_intro/
         │   ├── README.md
         │   ├── uno_rgb_led_intro.ino
         │   ├── LED_RGB_UNO.png
         │   ├── UNO_RGB_LED.png
-        ├── esp32_oled_weather/
+        ├── 02_esp32_oled_weather/
         │   ├── firmware/
         │   │   └── esp32_oled_weather/
         │   │       └── esp32_oled_weather.ino
         │   └── ESP32.png
         │   └── LICENSE
         │   └── README.md
-        ├── mega_tft32_dht11/
+        ├── 03_mega_tft32_dht11/
         │   ├── firmware/
         │   │   └── estacao_mega_dht11/
         │   │       └── estacao_mega_dht11.ino
         │   └── README.md
-        ├── mega_tft32_dht11_esp32/
+        ├── 04_mega_tft32_dht11_esp32/
         │   ├── firmware/
         │   │   ├── estacao_mega_dht11_esp32/
         │   │   │   └── estacao_mega_dht11_esp32.ino
         │   │   └── estacao_esp32/
         │   │       └── estacao_esp32.ino
         │   └── README.md
-        ├── mega_tft32_calibration/
+        ├── 05_mega_tft32_calibration/
         │   ├── firmware/
         │   │   └── mega_tft32_calibration.ino
         │   └── README.md
-        ├── mega_tft32_touch_calculator/
+        ├── 06_mega_tft32_touch_calculator/
         │   ├── firmware/
         │   │   └── mega_tft32_touch_calculator.ino
         │   └── README.md
