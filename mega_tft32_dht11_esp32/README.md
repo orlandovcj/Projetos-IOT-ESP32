@@ -97,7 +97,7 @@ Solução: alimentar o DHT11 via pinos digitais configurados como OUTPUT.
 
 <div>
 <p align="center">
-  <img src="estacao.png" width="500">
+  <img src="DHT11.png" width="500">
 </p>
 </div>
 
