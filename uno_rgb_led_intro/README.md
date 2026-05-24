@@ -2,7 +2,7 @@
 
 Projeto introdutório com Arduino Uno R3 e LED RGB, criado para demonstrar de forma simples o controle independente dos canais vermelho, verde e azul por software. O sketch alterna automaticamente entre várias cores usando os pinos digitais 10, 9 e 8 definidos no código enviado, com lógica preparada para LED RGB de ânodo comum por meio da diretiva `#define COMMON_ANODE`.
 
-Este experimento é uma boa porta de entrada para o repositório porque reúne conceitos fundamentais de eletrônica e programação embarcada: uso de saídas digitais/PWM, montagem em protoboard, resistores de limitação de corrente e composição de cores em um único componente.
+Este experimento é uma boa porta de entrada porque reúne conceitos fundamentais de eletrônica e programação embarcada: uso de saídas digitais/PWM, montagem em protoboard, resistores de limitação de corrente e composição de cores em um único componente.
 
 ## Objetivo
 
