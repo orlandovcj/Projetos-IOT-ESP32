@@ -4,6 +4,12 @@ Projeto introdutório com Arduino Uno R3 e LED RGB, criado para demonstrar de fo
 
 Este experimento é uma boa porta de entrada porque reúne conceitos fundamentais de eletrônica e programação embarcada: uso de saídas digitais/PWM, montagem em protoboard, resistores de limitação de corrente e composição de cores em um único componente.
 
+<div>
+<p align="center">
+  <img src="UNO_RGB_LED.png" width="500">
+</p>
+</div>
+
 ## Objetivo
 
 O objetivo deste projeto é acender um LED RGB em diferentes cores de forma automática, usando um Arduino Uno R3 como controlador. Além de servir como exemplo inicial para quem está começando com Arduino, ele ajuda a entender como três canais de cor podem ser combinados para gerar diferentes efeitos visuais.
@@ -97,7 +103,7 @@ Exemplos presentes no sketch:
 
 <div>
 <p align="center">
-  <img src="UNO_RGB_LED.png" width="500">
+  <img src="LED_RGB_UNO.png" width="500">
 </p>
 </div>
 
@@ -133,6 +139,7 @@ Este projeto pode evoluir facilmente para versões mais ricas e didáticas, por 
 uno_rgb_led_intro/
 ├── README.md
 ├── uno_rgb_led_intro.ino
+└── LED_RGB_UNO.png
 └── UNO_RGB_LED.png
 ```
 
