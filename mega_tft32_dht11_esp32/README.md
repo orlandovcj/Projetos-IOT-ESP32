@@ -95,6 +95,12 @@ Solução: alimentar o DHT11 via pinos digitais configurados como OUTPUT.
 | GND        | Pino 11        | OUTPUT LOW como GND  |
 | DATA       | Pino 14        | Sinal de dados       |
 
+<div>
+<p align="center">
+  <img src="estacao.png" width="500">
+</p>
+</div>
+
 ### Comunicação ESP32 -> Mega (UART Serial)
 
 | Pino ESP32   | Pino Mega 2560 | Observação          |
