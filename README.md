@@ -40,6 +40,11 @@ detalhando componentes, ligações, bibliotecas e aprendizados.
      /
         ├── README.md
         ├── LICENSE
+        ├── uno_rgb_led_intro/
+        │   ├── README.md
+        │   ├── uno_rgb_led_intro.ino
+        │   ├── LED_RGB_UNO.png
+        │   ├── UNO_RGB_LED.png
         ├── esp32_oled_weather/
         │   ├── firmware/
         │   │   └── esp32_oled_weather/
@@ -79,6 +84,7 @@ As pastas seguem o padrão:
 
 | Pasta                    | Descrição                            |
 | ------------------------ | ------------------------------------ |
+| uno_rgb_led_intro        | Uno + LED RGB                        |
 | mega-tft32-dht11         | Mega + TFT 3.2 + sensor DHT11        |
 | mega-tft32-esp32-weather | Mega + TFT 3.2 + ESP32 + clima/dolar |
 | uno-oled-bme280          | Uno + OLED + sensor BME280           |
@@ -199,7 +205,9 @@ As pastas seguem o padrão:
 
 ### Concluídos
 
-- [x] Estacao meteorologica local — Mega + TFT 3.2" + DHT11
+- [x] LED RGB controlado por Arduino UNO
+
+- [x] Estação meteorologica local - Mega + TFT 3.2" + DHT11
 
 - [x] Integração ESP32 - hora NTP + clima externo + cotação do dolar
 
