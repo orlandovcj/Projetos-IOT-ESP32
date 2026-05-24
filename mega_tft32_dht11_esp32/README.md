@@ -68,6 +68,12 @@ pelo ESP32 via Wi-Fi e enviados ao Arduino Mega por comunicação serial.
 
 ## Ligações
 
+<div>
+<p align="center">
+  <img src="montagem.png" width="500">
+</p>
+</div>
+
 ### Display TFT + Shield
 
 O display TFT_320QDT_9341 e encaixado no TFT LCD Mega Shield V2.2,
