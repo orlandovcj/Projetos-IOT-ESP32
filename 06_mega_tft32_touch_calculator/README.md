@@ -1,4 +1,4 @@
-# mega_tft32_touch_calculator
+# Calculadora simples usando Arduino Mega + display TFT touch
 
 
 <p align="center">
