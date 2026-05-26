@@ -133,7 +133,7 @@ Este projeto pode evoluir facilmente para versões mais ricas e didáticas, por 
 - Adicionar botão para alternar entre modos de iluminação.
 - Integrar potenciômetros para controlar manualmente os canais RGB.
 
-## Estrutura sugerida no repositório
+## Estrutura no repositório
 
 ```text
 uno_rgb_led_intro/
@@ -142,6 +142,16 @@ uno_rgb_led_intro/
 └── LED_RGB_UNO.png
 └── UNO_RGB_LED.png
 ```
+---
+
+## Aprendizados registrados
+
+### DHT11 com shield TFT no Mega
+
+- O shield TFT cobre o pino de 5V do Mega
+- Alimentar DHT11 via pino digital como OUTPUT HIGH funciona (consumo ~2.5mA)
+- Pinos 8 (VCC) e 14 (DATA) mostraram-se estaveis e sem conflitos
+- O barramento paralelo do TFT usa D22-D41; manter DATA do DHT11 fora dessa faixa
 
 ## Conclusão
 

@@ -307,6 +307,61 @@ com os valores raw reais do sensor.
 
 ---
 
+## Aprendizados registrados
+
+### Display TFT 3.2 ILI9341 + Mega Shield V2.2
+
+- O display retorna ID 0x0404 - considerado write-only por MCUFRIEND_kbv
+- Dois construtores funcionam com esse conjunto via UTFT: 
+  - UTFT myGLCD(CTE32_R2, 38, 39, 40, 41); // opcao 1 
+  - UTFT myGLCD(ILI9341_16, 38, 39, 40, 41); // opcao 2 - recomendada 
+- A biblioteca MCUFRIEND_kbv nao inicializa corretamente esse shield
+- Usar sempre a UTFT v2.83 oficial do site Rinky-Dink Electronics
+- Inicializar em modo LANDSCAPE para coincidir com o touch: myGLCD.InitLCD(LANDSCAPE);
+
+### sprintf com float no AVR/Mega
+
+- sprintf("%.1f", valor) gera caracteres inválidos na UTFT com AVR-GCC
+- Solucao: converter float manualmente:
+    int parte_int = (int)valor;
+    int parte_dec = (int)((valor - parte_int) * 10);
+    if (parte_dec < 0) parte_dec = -parte_dec;
+    sprintf(buf, "%d.%d", parte_int, parte_dec);
+
+### Touch XPT2046 com shield TFT Mega V2.2
+
+- Pinos corretos do touch no shield V2.2 (confirmados pelo esquematico): 
+  
+  - URTouch myTouch(6, 5, 4, 3, 2); // CLK CS DIN OUT IRQ 
+
+- Inicializar em LANDSCAPE: 
+  
+  - myTouch.InitTouch(LANDSCAPE); 
+
+- Conflito de timing entre UTFT (paralelo 16 bits) e URTouch (SPI): o barramento paralelo do display atropela os pinos do touch causando valores saturados nos cantos. Solucao: delays estrategicos: 
+  
+  - delay(5); // antes das operacoes de desenho 
+  
+  - delay(150); // apos as operacoes de desenho 
+
+- Mapeamento manual com valores reais do XPT2046: 
+  
+  - xReal = map(xRaw, 24, 302, 0, 319); 
+  
+  - yReal = map(yRaw, 10, 227, 0, 239); 
+
+- Filtro obrigatorio para leituras invalidas: 
+  
+  - if (xRaw != -1 && yRaw != -1) { ... } 
+
+- Valores de calibracao (URTouchCD.h): 
+  
+  - CAL_X 0x01F0C7C1UL 
+  
+  - CAL_Y 0x0218886BUL 
+  
+  - CAL_S 0x8013F0EFUL
+
 ## Licença
 
 O código-fonte de todos os projetos neste repositório é distribuido sob

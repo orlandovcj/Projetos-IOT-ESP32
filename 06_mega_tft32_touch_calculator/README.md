@@ -133,6 +133,9 @@ mega_tft32_touch_calculator/
 └── docs/
     └── notas-de-calibracao.md
 ```
+---
+
+## Aprendizados registrados
 
 ## Possíveis evoluções
 

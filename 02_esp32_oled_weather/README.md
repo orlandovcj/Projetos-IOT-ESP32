@@ -141,6 +141,26 @@ O display Nokia 5110 pode exigir ajuste fino de contraste via `display.setContra
 - Adicionar previsão estendida.
 - Controlar o backlight por GPIO para modo noturno.
 
+---
+
+## Aprendizados registrados
+
+### Comunicacao ESP32 + Mega
+
+- Usar Serial1 no Mega (pinos 18/19) para nao conflitar com USB/debug 
+- Usar Serial2 no ESP32 (GPIO 16/17 - marcados TX2/RX2 na serigrafia) 
+- No ESP32 DevKit V1 30 pinos, TX2 e RX2 ficam proximos ao GND/3V3 
+- Protocolo de linha simples com separador ; e terminador \n 
+- GND compartilhado entre ESP32 e Mega e obrigatorio para serial funcionar
+
+### GPIO16 e GPIO17 no ESP32 DevKit V1 30 pinos
+
+- Marcados como TX2 e RX2 na serigrafia 
+
+- Ficam no lado direito da placa proximos ao GND e 3V3 
+
+- Lado do conector USB (extremidade inferior da placa)
+
 ## Licença
 
 O código-fonte deste projeto é distribuído sob a licença MIT. Isso significa que você pode usar, copiar, modificar e distribuir o firmware, inclusive em projetos pessoais ou comerciais, desde que mantenha o aviso de copyright e o texto da licença.
