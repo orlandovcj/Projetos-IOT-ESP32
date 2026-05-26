@@ -146,4 +146,4 @@ A base atual permite expandir o projeto com relativa facilidade. Algumas melhori
 
 ## Conclusão
 
-O `mega_tft32_touch_calculator` é um projeto simples, útil e didático para o repositório, porque combina interface gráfica, leitura touch, lógica de processamento e refinamento visual em um único firmware. Ele também consolida o aprendizado obtido na calibração do conjunto Mega + TFT 3.2" + XPT2046, reaproveitando uma configuração que já se mostrou funcional e estável em testes anteriores.
+O `mega_tft32_touch_calculator` é um projeto simples, útil e didático porque combina interface gráfica, leitura touch, lógica de processamento e refinamento visual em um único firmware. Ele também consolida o aprendizado obtido na calibração do conjunto Mega + TFT 3.2" + XPT2046, reaproveitando uma configuração que já se mostrou funcional e estável em testes anteriores.
