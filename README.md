@@ -72,6 +72,10 @@ detalhando componentes, ligações, bibliotecas e aprendizados.
         │   ├── firmware/
         │   │   └── mega_tft32_touch_calculator.ino
         │   └── README.md
+        ├── 07_esp32_oled/
+        │   ├── firmware/
+        │   │   └── esp32_oled.ino
+        │   └── README.md
         └── ...
 
 ---
@@ -136,6 +140,8 @@ As pastas seguem o padrão:
 - [x] Calibração e configuração do TFT 3,2" com touch XPT2046
 
 - [x] Calculadora touch simples
+
+- [x] Hora e clima com ESP32 e display OLED Nokia 5110
 
 ### Em desenvolvimento
 
